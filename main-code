@@ -1,0 +1,47 @@
+// Below we get user's choice.
+const getUserChoice = userInput => {
+  if (userInput === 'rock' || userInput === 'paper' || userInput === 'scissors') {
+    return userInput;
+  } else {
+    return 'Hey! It\'s a rock, paper, or scissors game.';
+  }
+};
+
+// Get user's input here.
+const userChoice = getUserChoice('paper');
+console.log('Your choice is: ' + userChoice);
+
+// Below we get computer's choice.
+const getComputerChoice = () => {
+  const randomNumber = Math.floor(Math.random() * 3);
+
+  if (randomNumber === 0) {
+    return 'rock';
+  } else if (randomNumber === 1) {
+    return 'paper';
+  } else if (randomNumber === 2) {
+    return 'scissors';
+  }
+};
+
+// Get computer's choice.
+const computerChoice = getComputerChoice();
+console.log("Computer's choice is: " + computerChoice);
+
+// Below we decide who's the winner.
+const determineWinner = (userChoice, computerChoice) => {
+  if (userChoice === computerChoice) {
+    return "It's a tie!";
+  }
+
+  if (userChoice === 'rock' && computerChoice === 'scissors') return 'You won!';
+  if (userChoice === 'rock' && computerChoice === 'paper') return 'You lost.';
+  if (userChoice === 'paper' && computerChoice === 'rock') return 'You won!';
+  if (userChoice === 'paper' && computerChoice === 'scissors') return 'You lost.';
+  if (userChoice === 'scissors' && computerChoice === 'paper') return 'You won!';
+  if (userChoice === 'scissors' && computerChoice === 'rock') return 'You lost.';
+
+  return 'Error';
+};
+
+console.log(determineWinner(userChoice, computerChoice));
